@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Origen & Grano | Cafetería de Especialidad</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand">☕ Origen & Grano</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-outline btn-sm">Panel Admin</a>
+        <button id="btn-abrir-carrito" class="btn btn-primary btn-sm">
+          🛒 Carrito <span id="contador-carrito" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag">Tostado Artesanal • Stock en Tiempo Real</span>
+        <h1>Café de especialidad tostado para despertar tus sentidos</h1>
+        <p>
+          Seleccionamos los mejores granos de altura, preparamos bebidas de autor y ofrecemos accesorios barista. Todo conectado en vivo a nuestro inventario.
+        </p>
+        <div class="hero-btns">
+          <a href="#catalogo" class="btn btn-primary">Explorar Catálogo</a>
+          <a href="#galeria" class="btn btn-outline">Ver Galería</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Franja de beneficios -->
+  <section class="features-strip">
+    <div class="container features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🌱</div>
+        <div>
+          <h4>Granos de Origen</h4>
+          <p>Cosecha seleccionada 100% arábica de micro-lotes locales.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔥</div>
+        <div>
+          <h4>Tostado Semanal</h4>
+          <p>Garantizamos aroma intenso y frescura en cada bolsa.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📦</div>
+        <div>
+          <h4>Stock Actualizado</h4>
+          <p>Cada compra descuenta automáticamente del inventario real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de imágenes con Zoom -->
+  <section id="galeria" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Experiencia visual</span>
+        <h2>Nuestra Cafetería</h2>
+        <p>Haz clic en cualquier fotografía para verla en detalle.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85', 'Arte Latte de la casa')">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Arte Latte" />
+          <div class="gallery-overlay">Arte Latte de la casa</div>
+        </div>
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=85', 'Tostado medio en grano')">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=600&q=80" alt="Granos tostados" />
+          <div class="gallery-overlay">Tostado medio en grano</div>
+        </div>
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85', 'Nuestro espacio acogedor')">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Interior cafetería" />
+          <div class="gallery-overlay">Nuestro espacio acogedor</div>
+        </div>
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=85', 'Métodos de extracción manual')">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" alt="Extracción" />
+          <div class="gallery-overlay">Métodos de extracción manual</div>
+        </div>
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=85', 'Repostería horneada cada mañana')">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Croissants" />
+          <div class="gallery-overlay">Repostería horneada cada mañana</div>
+        </div>
+        <div class="gallery-card" onclick="abrirLightbox('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=85', 'Barra de espresso profesional')">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" alt="Barra espresso" />
+          <div class="gallery-overlay">Barra de espresso profesional</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section id="catalogo" class="section" style="background: var(--cream);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Tienda en línea</span>
+        <h2>Catálogo de Productos</h2>
+        <p>Filtra por categoría, busca tu favorito y realiza tu pedido con actualización de stock al instante.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="search-box">
+          <input id="buscador" type="text" class="input" placeholder="🔍 Buscar café, postres, accesorios..." />
+        </div>
+        <div style="min-width: 200px;">
+          <select id="ordenar-por" class="select">
+            <option value="defecto">Ordenar por: Destacados</option>
+            <option value="precio-asc">Precio: Menor a Mayor</option>
+            <option value="precio-desc">Precio: Mayor a Menor</option>
+            <option value="stock-desc">Mayor stock disponible</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="pills-categorias" class="category-pills"></div>
+
+      <div id="grid-productos" class="products-grid">
+        <p style="grid-column: 1 / -1; text-align: center; padding: 40px;">Cargando catálogo desde MockAPI...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto" class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>☕ Origen & Grano</h4>
+          <p style="font-size: 0.9rem;">Cafetería de especialidad enfocada en granos seleccionados, repostería fresca y cultura barista.</p>
+        </div>
+        <div>
+          <h4>Horarios</h4>
+          <p style="font-size: 0.9rem;">Lunes a Sábado: 07:30 - 21:00<br />Domingos: 09:00 - 19:00</p>
+        </div>
+        <div>
+          <h4>Administración</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 10px;">Gestiona productos, precios y stock en vivo.</p>
+          <a href="admin.html" class="btn btn-primary btn-sm">Ir al Panel Admin</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Origen & Grano — Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Carrito Lateral -->
+  <div id="modal-carrito" class="modal-backdrop drawer-backdrop hidden">
+    <div class="cart-drawer">
+      <div class="drawer-header">
+        <h3>Tu Pedido</h3>
+        <button id="btn-cerrar-carrito" class="close-btn">&times;</button>
+      </div>
+      <div id="lista-carrito" class="cart-items"></div>
+      <div class="drawer-footer">
+        <div class="form-group">
+          <label for="cliente-nombre">Tu nombre (para el ticket)</label>
+          <input id="cliente-nombre" type="text" class="input" placeholder="Ej. Fabricio" />
+        </div>
+        <div class="total-row">
+          <span>Total a pagar:</span>
+          <span id="total-carrito">Bs. 0.00</span>
+        </div>
+        <button id="btn-comprar" class="btn btn-primary" style="width: 100%; padding: 13px;">
+          Confirmar Compra
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Lightbox Galería -->
+  <div id="modal-lightbox" class="modal-backdrop hidden">
+    <div class="lightbox-content">
+      <button id="btn-cerrar-lightbox" class="close-btn" style="position: absolute; top: -40px; right: 0;">&times;</button>
+      <img id="lightbox-img" src="" alt="Vista ampliada" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Modal Recibo de Compra -->
+  <div id="modal-recibo" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="drawer-header">
+        <h3>✅ ¡Compra Confirmada!</h3>
+        <button id="btn-cerrar-recibo" class="close-btn">&times;</button>
+      </div>
+      <div id="recibo-contenido" style="padding: 24px;"></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

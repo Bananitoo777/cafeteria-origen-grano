@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin | Origen & Grano</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Login -->
+  <section id="vista-login" class="login-page">
+    <div class="login-card">
+      <h1>☕ Panel Admin</h1>
+      <p class="login-sub">Inicia sesión para gestionar el inventario de Origen & Grano</p>
+      <form id="form-login">
+        <div class="form-group">
+          <label for="login-usuario">Usuario</label>
+          <input id="login-usuario" type="text" class="input" placeholder="admin" required />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Contraseña</label>
+          <input id="login-password" type="password" class="input" placeholder="••••••••" required />
+        </div>
+        <p id="error-login" class="hidden" style="color: #dc2626; font-size: 0.85rem; margin-bottom: 14px; font-weight: 600;">
+          Usuario o contraseña incorrectos.
+        </p>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Ingresar al Panel</button>
+      </form>
+      <div style="text-align: center; margin-top: 18px;">
+        <a href="index.html" style="color: var(--caramel); font-size: 0.85rem; text-decoration: none; font-weight: 600;">← Volver a la tienda</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel Dashboard -->
+  <section id="vista-panel" class="hidden">
+    <header class="navbar">
+      <div class="container nav-inner">
+        <span class="brand">☕ Admin — Origen & Grano</span>
+        <div class="nav-actions">
+          <button id="btn-cargar-demo" class="btn btn-outline btn-sm">⚡ Cargar Datos de Ejemplo</button>
+          <a href="index.html" class="btn btn-secondary btn-sm">Ver Tienda</a>
+          <button id="btn-logout" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Productos</div>
+          <div id="kpi-productos" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Unidades en Stock</div>
+          <div id="kpi-stock" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Stock Bajo / Agotado</div>
+          <div id="kpi-bajo-stock" class="kpi-value" style="color: var(--danger);">0</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Valor Inventario</div>
+          <div id="kpi-valor" class="kpi-value">Bs. 0</div>
+        </div>
+      </div>
+
+      <!-- Categorías -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Gestión de Categorías</h3>
+        </div>
+        <form id="form-categoria" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+          <input id="input-categoria" type="text" class="input" style="flex: 1; min-width: 220px;" placeholder="Nueva categoría (ej. Café Helado)" required />
+          <button type="submit" class="btn btn-dark">Agregar Categoría</button>
+        </form>
+        <div id="lista-categorias" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+      </div>
+
+      <!-- Formulario Producto -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 id="titulo-form-producto">Agregar Nuevo Producto</h3>
+        </div>
+        <form id="form-producto" class="form-grid">
+          <input type="hidden" id="prod-id" />
+          <div>
+            <label style="font-size:0.82rem; font-weight:600;">Nombre</label>
+            <input id="prod-nombre" type="text" class="input" placeholder="Ej. Cappuccino Artesanal" required />
+          </div>
+          <div>
+            <label style="font-size:0.82rem; font-weight:600;">Categoría</label>
+            <select id="prod-categoria" class="select" required></select>
+          </div>
+          <div>
+            <label style="font-size:0.82rem; font-weight:600;">Precio (Bs.)</label>
+            <input id="prod-precio" type="number" step="0.01" min="0" class="input" placeholder="25.00" required />
+          </div>
+          <div>
+            <label style="font-size:0.82rem; font-weight:600;">Stock disponible</label>
+            <input id="prod-stock" type="number" min="0" class="input" placeholder="15" required />
+          </div>
+          <div class="col-span-full">
+            <label style="font-size:0.82rem; font-weight:600;">URL de la Imagen</label>
+            <input id="prod-imagen" type="url" class="input" placeholder="https://..." required />
+          </div>
+          <div class="col-span-full">
+            <label style="font-size:0.82rem; font-weight:600;">Descripción</label>
+            <textarea id="prod-descripcion" rows="2" class="textarea" placeholder="Notas de sabor, tamaño o presentación..." required></textarea>
+          </div>
+          <div class="col-span-full" style="display: flex; gap: 10px; align-items: center;">
+            <button type="submit" class="btn btn-primary">Guardar Producto</button>
+            <button type="button" id="btn-cancelar-edit" class="btn btn-secondary hidden">Cancelar Edición</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tabla CRUD -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Inventario de Productos</h3>
+          <input id="buscar-admin" type="text" class="input" style="max-width: 280px;" placeholder="Buscar en inventario..." />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock (Ajuste rápido)</th>
+                <th style="text-align: right;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-productos"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Modal Detalle de Producto -->
+  <div id="modal-detalle" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="drawer-header">
+        <h3 id="detalle-titulo">Detalle del Producto</h3>
+        <button id="btn-cerrar-detalle" class="close-btn">&times;</button>
+      </div>
+      <div id="detalle-contenido" style="padding: 24px;"></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
